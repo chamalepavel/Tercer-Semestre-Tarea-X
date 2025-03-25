@@ -1,0 +1,365 @@
+TAREA 1
+Escribe una funciÃ³n greetWorld(). Tu funciÃ³n no debe tener parÃ¡metros y
+debe devolver a cadena 'Hello, World!'.
+Puedes usar declaraciÃ³n de funciones o expresiÃ³n de funciones.
+
+function greetWorld() {
+    return 'Hello, World!';
+}
+
+console.log(greetWorld());
+
+
+TAREA 2
+La edad mÃ­nima mÃ¡s comÃºn para votar es de 18 aÃ±os.  Escribe una funciÃ³n
+canIVote() que tome un nÃºmero que represente la edad de la persona y
+devuelva el valor booleano true si tiene 18 aÃ±os o mÃ¡s, y el
+valor booleano false si no los tiene. Muestralo en consola
+
+const greetWorld = () => 'Hello, World!';
+console.log(greetWorld());
+
+TAREA 3
+Escriba una funciÃ³n, agreeOrDisagree(), que tome dos cadena y devuelva
+'You agree!' si las dos cadena son iguales y 'You disagree!' si las
+dos cadenas son diferentes. Muestra el resultado en consola.
+
+Prueba tu cÃ³digo con:
+console.log(agreeOrDisagree("yep", "yep"))
+
+const canIVote = age => (typeof age === 'number' && age >= 18);
+console.log(canIVote(19));
+
+
+TAREA 4
+Escribe una funciÃ³n, lifePhase(), que tome la edad(age) de una persona como
+nÃºmero y devuelva en quÃ© fase de la vida se encuentra.
+
+AquÃ­ estan las clasificaciones:
+ 0- 3 deberÃ­a devolver 'baby'
+ 4-12 deberÃ­a devolver 'child'
+13-19 deberÃ­a devolver 'teen'
+20-64 deberÃ­a devolver 'adult'
+65-140 deberÃ­a devolver 'senior citizen'
+
+Si el nÃºmero es menor que cero o mayor que 140, el programa
+deberÃ­a devolver 'This is not a valid age'
+
+function lifePhase(age) {
+    if (age >= 0 && age <= 3) return 'baby';
+    if (age >= 4 && age <= 12) return 'child';
+    if (age >= 13 && age <= 19) return 'teen';
+    if (age >= 20 && age <= 64) return 'adult';
+    if (age >= 65 && age <= 140) return 'senior citizen';
+    return 'This is not a valid age';
+}
+
+console.log(lifePhase(25));
+
+TAREA 5
+Escribe una funciÃ³n, finalGrade(). DeberÃ­a:
+
+* Toma tres argumentos de tipo nÃºmero.
+* Encuentra el average de esos tres nÃºmeros
+* Devuelve la calificaciÃ³n de la letra (como una cadena) 
+  average a la que corresponde.
+* Devuelve 'Ha ingresado una calificaciÃ³n no vÃ¡lida' si alguna de 
+  las tres calificaciones es menor que 0 o mayor que 100.
+
+    0-59 deberÃ­a devolver: 'F'
+    60-69 deberÃ­a devolver: 'D'
+    70-79 deberÃ­a devolver: 'C'
+    80-89 deberÃ­a devolver: 'B'
+    90-100 deberÃ­a devolver:'A'
+
+function finalGrade(grade1, grade2, grade3) {
+    if ([grade1, grade2, grade3].some(g => g < 0 || g > 100)) {
+        return 'Ha ingresado una calificación no válida';
+    }
+    let average = (grade1 + grade2 + grade3) / 3;
+    return average >= 90 ? 'A' :
+           average >= 80 ? 'B' :
+           average >= 70 ? 'C' :
+           average >= 60 ? 'D' : 'F';
+}
+
+console.log(finalGrade(85, 90, 78));
+
+TAREA 6
+Escribe una funciÃ³n reportingForDuty(), que tenga dos parÃ¡metros string,
+rank y lastname, y retorne una string en el siguiente formato:
+'rank lastName reporting for duty'
+
+reportingForDuty('Private', 'Fido') 
+// DeberÃ­a retornar 'Private Fido reporting for duty!'
+
+const reportingForDuty = (rank, lastName) => `${rank} ${lastName} reporting for duty!`;
+console.log(reportingForDuty('Private', 'Fido'));
+
+
+TAREA 7
+Arregla el cÃ³digo
+Te presento una funciÃ³n rollTheDice(), la cual supuestamente
+simula el lanzamiento de dos dados y el total de los dados.
+La funciÃ³n casÃ­ funciona, pero hay algunos errores.
+Â¿Puedes arreglar el cÃ³digo, por favor?
+
+const rollTheDice = () => {
+  // Math.random() nos da un numero random desde 0 pero no incluye el 1
+  //Multiplicamos ese nÃºmero por 6 para tener un nÃºmero entre 0 y 6 pero no logramos 
+  //incluir el 6
+  // para lograrlo hemos intentado lo siguiente sumamos 1
+    let die1 = Math.random() * 6 + 1
+    let die2 = Math.random() * 6 + 1
+    return die1 + die2
+}
+
+const rollTheDice = () => {
+    let die1 = Math.floor(Math.random() * 6) + 1;
+    let die2 = Math.floor(Math.random() * 6) + 1;
+    return die1 + die2;
+};
+console.log(rollTheDice());
+
+
+TAREA 8
+Aunque la masa de un objeto permanece constante en todo el universo, 
+el peso estÃ¡ determinado por la fuerza de gravedad que ejerce sobre Ã©l. 
+Como cada planeta tiene una gravedad diferente, el mismo objeto pesarÃ­a 
+cantidades distintas en cada uno de esos planetas.
+
+Escribe una funciÃ³n, calculateWeight(). DeberÃ­a:
+* Tener dos parÃ¡metros: earthWeight y planet
+* Espera que earthWeight sea un nÃºmero
+* Espera que planet sea una string
+* devuelve un nÃºmero que representa el peso de la Tierra equivalente al planet 
+  ingresado.
+
+Manejar los siguientes casos:
+'Mercury'peso = earthWeight* 0,378
+'Venus'peso = earthWeight* 0,907
+'Mars'peso = earthWeight* 0,377
+'Jupiter'peso = earthWeight* 2,36
+'Saturn'peso = earthWeight* 0,916
+Para todas las demÃ¡s entradas, 
+devuelva'Invalid Planet Entry. Try: Mercury, Venus, Mars, Jupiter, or Saturn.'
+
+Pruebalo con:
+console.log(calculateWeight(100, 'Jupiter')) // Should print 236
+
+function calculateWeight(earthWeight, planet) {
+    const gravity = {
+        Mercury: 0.378, Venus: 0.907, Mars: 0.377,
+        Jupiter: 2.36, Saturn: 0.916
+    };
+    return gravity[planet] ? earthWeight * gravity[planet] : 'Invalid Planet Entry';
+}
+
+console.log(calculateWeight(100, 'Jupiter'));
+
+
+TAREA 9
+
+Puede resultar difÃ­cil hacer un seguimiento de lo que es verdadero o 
+falso en JavaScript . 
+Escriba una funciÃ³n, truthyOrFalsy(), que acepte cualquier valor y 
+devuelva true si ese valor es verdadero y false si ese valor es falso .
+https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+*/
+
+const truthyOrFalsy = value => !!value;
+console.log(truthyOrFalsy(0)); 
+console.log(truthyOrFalsy("Hello")); 
+
+/*TAREA 10 
+Las personas tienen muchos amigos, pero a veces creen tener mÃ¡s,
+se ha realizado un estudio y se ha determinado que la cantidad
+de amigos imaginarios de una persona es igual a la cantidad
+de amigos por 0.25 es decir un 25% de sus amigos o 1/4 de ellos.
+
+Escribe una funciÃ³n, numImaginatyFriends() que tome el nÃºmero
+de amigos de una persona y devuelva el nÃºmero de amigos
+imaginarios que tiene esa persona.
+Debido a que los amigos solo pueden venir en nÃºmeros enteros,
+deberÃ­as redondear el resultado al entro mÃ¡s cercano anter de
+retornarlo.
+La funciÃ³n Math.ceil() te resultarÃ¡ Ãºtil.
+
+Utiliza las siguientes lÃ­neas de cÃ³digo para realizar la prueba
+console.log(numImaginaryFriends(20)) // Debe imprimir5
+console.log(numImaginaryFriends(10)) // debe imprimir 3
+
+const numImaginaryFriends = friends => Math.ceil(friends * 0.25);
+console.log(numImaginaryFriends(20));
+
+
+/*TAREA 11
+Escribe una funciÃ³n, sillySentence(), que contenga 3 parÃ¡metros de
+cadena y devuelva la siguiente oraciÃ³n tonta con los espacios
+en blanco completados por los argumentos pasados a la funciÃ³n
+
+    I am so (adjetive) becouse I (verb) coding! Time to write
+              some more awesome (noum) !
+
+La llamada a sillySentence('excited', 'love', 'functions') 
+deberÃ­a retornar 'I am so excited because I love coding! Time
+to write some more awesome functions!'   
+
+Utiliza la siguiente lÃ­nea de cÃ³digo para realizar la prueba
+console.log(sillySentence('excited', 'love', 'functions')) 
+*/
+
+const sillySentence = (adj, verb, noun) => 
+    `I am so ${adj} because I ${verb} coding! Time to write some more awesome ${noun}!`;
+
+console.log(sillySentence('excited', 'love', 'functions'));
+
+
+*TAREA 12
+Escribe una funciÃ³n, howOld(), que tome dos parÃ¡metros numÃ©ricos, 
+age y year, y devuelva cuÃ¡ntos aÃ±os tendrÃ­a una persona con esa 
+edad en ese aÃ±o.
+
+Debe tratar tres casos diferentes:
+
+*Si el year estÃ¡ en el futuro, debe devolver:
+ 'Tu tendrÃ¡s [age calculada] en el aÃ±o [year].
+
+*Si el year es anterior alnacimiento, debe devolver una cadena con el
+ siguiente formato:
+ 'El aÃ±o [year] fue [numero de aÃ±os calculados] aÃ±os antes de nacer'
+
+ *Si el year es en el pasado pero no anterior al aÃ±o de nacimiento de
+ la persona, debe devolver:
+  'Tu tenias [age calculada] en el aÃ±o [year del pasado] 
+  
+  Utiliza en tu funciÃ³n::
+     let dateToday = new Date();
+    let thisYear = dateToday.getFullYear();
+  */
+
+function howOld(age, year) {
+    const thisYear = new Date().getFullYear();
+    const birthYear = thisYear - age;
+    return year > thisYear ? `Tu tendrás ${year - birthYear} años en el año ${year}.`
+        : year < birthYear ? `El año ${year} fue ${birthYear - year} años antes de nacer.`
+        : `Tu tenías ${year - birthYear} en el año ${year}.`;
+}
+
+console.log(howOld(25, 2000));
+
+
+/*TAREA 13
+Arregla el cÃ³digo roto:
+
+Dado el porcentaje de ADN compartido entre dos personas, se puede calcular 
+su probable relaciÃ³n familiar .
+
+Escribimos una funciÃ³n, whatRelation(), que tiene un parÃ¡metro numÃ©rico, 
+percentSharedDNA, y devuelve la relaciÃ³n probable. 
+Esperamos que el nÃºmero que se ingrese sea siempre un entero entre 0 y 100, pero por alguna razÃ³n no funciona.
+
+AsÃ­ es como se supone que debe calcularse la relaciÃ³n:
+
+100 deberÃ­an regresar'You are likely identical twins.'
+35-99 deberÃ­a regresar'You are likely parent and child or full siblings.'
+14-34 deberÃ­a regresar'You are likely grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings.'
+6-13 deberÃ­a regresar'You are likely 1st cousins.'
+3-5 deberÃ­an regresar'You are likely 2nd cousins.'
+1-2 deberÃ­a regresar'You are likely 3rd cousins.'
+0 deberÃ­a regresar'You are likely not related.'
+
+Â¡Lamentablemente no estÃ¡ funcionando como queremos!
+
+whatRelation(34) 
+// Should return 'You are likely grandparent and grandchild, 
+// aunt/uncle and niece/nephew, or half siblings.'
+// But instead it's returning 'You are likely 1st cousins.'
+
+whatRelation(3)
+// Should return 'You are likely 2nd cousins.'
+// But instead it's returning 'You are likely grandparent and grandchild, 
+// aunt/uncle and niece/nephew, or half siblings.'
+
+El cÃ³digo que estÃ¡ roto es el siguiente:
+
+  const whatRelation = percentSharedDNA => {
+    if (percentSharedDNA === 100) {
+        return 'You are likely identical twins.'
+    }
+    if (percentSharedDNA > 34) {
+        return 'You are likely parent and child or full siblings.'
+    }
+    if (percentSharedDNA < 13) {
+        return 'You are likely grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings.'
+    }
+    if (percentSharedDNA > 5) {
+        return 'You are likely 1st cousins.'
+    }
+    if (percentSharedDNA > 2) {
+        return 'You are likely 2nd cousins.'
+    }
+    if (percentSharedDNA > 0) {
+        return 'You are likely 3rd cousins'
+    }
+    return 'You are likely not related.'
+}
+
+console.log(whatRelation(34))
+// Should print 'You are likely grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings.'
+
+console.log(whatRelation(3))
+// Should print 'You are likely 2nd cousins.'
+
+Puedes arreglarlo? */
+
+function whatRelation(percentSharedDNA) {
+    return percentSharedDNA === 100 ? 'You are likely identical twins.'
+        : percentSharedDNA >= 35 ? 'You are likely parent and child or full siblings.'
+        : percentSharedDNA >= 14 ? 'You are likely grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings.'
+        : percentSharedDNA >= 6 ? 'You are likely 1st cousins.'
+        : percentSharedDNA >= 3 ? 'You are likely 2nd cousins.'
+        : percentSharedDNA >= 1 ? 'You are likely 3rd cousins.'
+        : 'You are likely not related.';
+}
+
+/*TAREA 14
+Calculadora de propinas tipCalculator()
+Cree una funciÃ³n, tipCalculator(), que tenga dos parÃ¡metros, una cadena que represente qualityel servicio recibido y un nÃºmero que represente el totalcosto.
+
+Devuelve la propina, como un nÃºmero, en funciÃ³n de lo siguiente:
+'malo' debe devolver una propina del 5%
+'ok' debe devolver una propina del 15%
+'bueno' debe devolver una propina del 20%
+'excelente' debe devolver una propina del 30%
+todas las demÃ¡s entradas deben tener como valor predeterminado el 18%.
+
+tipCalculator('good', 100) // Should return 20
+
+const tipCalculator = (quality, totalCost) => {
+    const tips = { malo: 0.05, ok: 0.15, bueno: 0.20, excelente: 0.30 };
+    return totalCost * (tips[quality] || 0.18);
+};
+
+console.log(tipCalculator('bueno', 100));
+
+
+/*TAREA 15
+Escriba una funciÃ³n, toEmoticon(), que tome una cadena y devuelva el emoticÃ³n correspondiente como cadena. Utilice un modificador/caso y cubra estos casos:
+
+'shrug'deberÃ­a regresar '|_{"}_|'
+'smiley face'deberÃ­a regresar ':)'
+'frowny face'deberÃ­a regresar ':('
+'winky face'deberÃ­a regresar ';)'
+'heart'deberÃ­a regresar '<3'
+cualquier otra entrada deberÃ­a regresar'|_(* ~ *)_|' */
+
+const toEmoticon = face => ({
+    shrug: '|_{"}_|', 'smiley face': ':)', 'frowny face': ':(', 
+    'winky face': ';)', heart: '<3'
+}[face] || '|_(* ~ *)_|');
+
+console.log(toEmoticon('heart'));
+
+
+
